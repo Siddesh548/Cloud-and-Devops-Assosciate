@@ -8,7 +8,8 @@ read -p "Enter your name:" Name
 
 #read -p "Enter your age:" Age
 
-if  [[ -z "$Name"|| !"$Name" =~ ^[a-zA-Z\s]*$ ]]; then
+#'regx' which checks starts with strings with space also.
+if  [[ -z "$Name"|| !"$Name" =~ ^[a-zA-Z\s]*$ ]]; then ## '=~' supports regx
         echo "Name sholud be string"
 else
         echo "Name is $Name"
