@@ -1,0 +1,1 @@
+2025-11-23 15:04:03 |user:siddu |host:kali |evicted_keys:100

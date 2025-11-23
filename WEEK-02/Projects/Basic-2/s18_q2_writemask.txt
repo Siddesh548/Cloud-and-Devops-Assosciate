@@ -1,0 +1,16 @@
+siddu
+kali
+Files without write permission:
+-r-r-r-- 1 siddu siddu  0 Nov 22 15:17 config1.tmp
+-r--r--r-- 1 siddu siddu  0 Nov 22 15:17 config2.tmp
+-r--r--r-- 1 siddu siddu  0 Nov 22 15:17 randomfile.txt
+-r-r-r-- 1 siddu siddu 51 Nov 22 15:21 s8_stu18
+-r-r-r-- 1 siddu siddu  0 Nov 22 15:17 testA.conf
+-r-r-r-- 1 siddu siddu  0 Nov 22 15:17 testB.conf
+
+-------------------------------------------------
+Files with write permission:
+
+-rw-rw-r-- 1 siddu siddu  0 Nov 22 15:17 testA.conf
+-rw-rw-r-- 1 siddu siddu  0 Nov 22 15:17 testB.conf
+-rw-rw-r-- 1 siddu siddu  0 Nov 22 15:17 config1.tmp
