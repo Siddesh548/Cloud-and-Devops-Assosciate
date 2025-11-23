@@ -1,0 +1,29 @@
+Topic: File Permissions
+Tools Required: ls -l, chmod, Linux Terminal
+Task Description:
+A misconfigured automation script created files with intentionally restricted write masks, preventing students from updating temporary configurations. Trainers need a write-mask validation to identify files with incorrect write restrictions.
+
+Expected Output:
+Submit a file named s18_q2_writemask.txt summarizing the files that have missing write permission.
+
+
+**RUN Corrupted.sh script to get directory/files with no write-permission**
+
+chmod +x corrupted.sh
+bash corrupt.sh
+
+
+**To Find those files**
+
+bash no-write.sh
+
+store sthe output in s18_q2_writemask.txt file.
+
+
+**To change the permissions of those file**
+
+chmod a+w <filename> <filename> <filemname>
+
+**To check**
+
+find . -type f -perm /222 -printf "%p\n" >> s18_q5_writemask.txt

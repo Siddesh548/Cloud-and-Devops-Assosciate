@@ -1,0 +1,30 @@
+**Topic: Logs & Filters**
+**Tools Required:** Linux Terminal, grep, awk
+**Task Description:**
+A caching experiment filled system logs with stale object eviction notices. Trainers want these particular eviction warnings extracted to demonstrate cache invalidation mechanisms.
+
+**Expected Output:**
+Submit a file named s18_q5_eviction.txt containing only the filtered eviction log entries.
+
+**Tools Used**
+
+Redis — To simulate cache eviction
+grep — To filter eviction logs
+awk — To format extracted data
+Linux Terminal — To run commands & view logs
+
+**Installing Redis**
+
+sudo apt update
+sudo apt install redis-server -y
+
+
+**Enable and start Redis**
+
+sudo systemctl enable redis-server
+sudo systemctl start redis-server
+
+**Running the Script**
+
+chmod +x evict.sh
+bash evict.sh
