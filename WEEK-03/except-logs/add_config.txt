@@ -1,0 +1,26 @@
+DEBUG:root:This is debug
+INFO:root:Program started
+WARNING:root:Warning info
+ERROR:root:Error info
+CRITICAL:root:Critical info
+INFO:root:Program started
+DEBUG:root:This is debug
+INFO:root:Program started
+WARNING:root:Warning info
+ERROR:root:Error info
+CRITICAL:root:Critical info
+INFO:root:Result: 7
+INFO:root:Program ended
+INFO:root:Program started
+DEBUG:root:This is debug
+INFO:root:Program started
+WARNING:root:Warning info
+ERROR:root:Error info
+CRITICAL:root:Critical info
+INFO:root:Result: 10
+INFO:root:Program ended
+DEBUG:root:This is debug
+INFO:root:Program started
+WARNING:root:Warning info
+ERROR:root:Error info
+CRITICAL:root:Critical info
