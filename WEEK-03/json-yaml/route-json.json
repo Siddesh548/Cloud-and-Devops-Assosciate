@@ -1,0 +1,44 @@
+[
+        {
+        "route": "default",
+        "via": "10.0.2.2",
+        "interface": "eth0",
+        "protocol": "dhcp",
+        "source": "10.0.2.15",
+        "metric": "100"
+    },
+    {
+        "route": "10.0.2.0/24",
+        "interface": "eth0",
+        "protocol": "kernel",
+        "flags": [
+            "scope",
+            "link"
+        ],
+        "source": "10.0.2.15",
+        "metric": "100"
+    },
+    {
+        "route": "172.17.0.0/16",
+        "interface": "docker0",
+        "protocol": "kernel",
+        "flags": [
+            "scope",
+            "link",
+            "linkdown"
+        ],
+        "source": "172.17.0.1"
+    },
+    {
+        "route": "192.168.49.0/24",
+        "interface": "br-a5ea547a6abc",
+        "protocol": "kernel",
+        "flags": [
+            "scope",
+            "link",
+            "linkdown"
+        ],
+        "source": "192.168.49.1"
+    }
+]                                                                                                                   
+
