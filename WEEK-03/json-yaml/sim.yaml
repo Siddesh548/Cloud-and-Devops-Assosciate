@@ -1,0 +1,7 @@
+deviceId: gNB-001
+status: active
+cells:
+  - cellId: 1
+    pci: 290
+  - cellId: 2
+    pci: 283

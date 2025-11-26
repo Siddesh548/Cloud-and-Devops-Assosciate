@@ -1,0 +1,14 @@
+{
+    "deviceId":"gNB-001",
+    "status": "active",
+    "cells" :[
+        {
+        "cellID": 1,
+        "Pid": 283
+        },
+        {
+        "cellID": 1,
+        "Pid": 283
+        }
+    ]
+}
