@@ -1,0 +1,2 @@
+2025-12-05 12:45:07,082 - ERROR - Enter correct name
+2025-12-05 12:45:40,390 - ERROR - Name should be in string

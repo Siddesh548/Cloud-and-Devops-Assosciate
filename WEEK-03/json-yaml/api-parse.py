@@ -2,10 +2,10 @@ import requests, json,yaml
 
 r = requests.get("https://jsonplaceholder.typicode.com/posts")
 
-##########JSON --> Python DICT##########
+##########JSON --> Python DICT##########---->json.load()
 
 response = r.json()
-#print(json.dumps(response,indent=4)   ##Python dict --> JSON (json.dumps)
+#print(json.dumps(response,indent=4)   ##Python dict --> JSON (json.dumps)+indent=
        #or#
 # print(json.dumps(r.json(), indent=2))
 # with open("js-py.json","w") as f:
