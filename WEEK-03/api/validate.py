@@ -31,3 +31,4 @@ print(fetch_data(url))
 
 # bad_json_url = "https://example.com"
 # print(fetch_data(bad_json_url))
+

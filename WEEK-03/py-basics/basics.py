@@ -23,3 +23,5 @@ def check(n1,n2,s):
 s = check(int(input("enter n1:")),float(input("enter n2:")),input("enter string:"))
 print(s)
 print(type(s))
+
+

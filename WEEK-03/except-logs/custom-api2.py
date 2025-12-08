@@ -64,6 +64,77 @@
 
 ###################################################################
 
+# import logging
+# import json
+# import time
+
+
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# script_log = []
+
+# input_lines = [
+#     "INFO: Connection successful",
+#     "ERROR: Timeout",
+#     "INFO: Retry",
+#     '{"level": "WARNING", "message": "Disk space low"}',
+#     '{"level": "ERROR", "message": "Database down"}',
+#     "MALFORMED LINE HERE"
+# ]
+
+# # Audit file path
+# audit_file_path = "audit.log"
+
+# # Counters for summary
+# processed_count = 0
+# failed_count = 0
+
+# def log_error(message):
+#     global failed_count
+#     failed_count += 1
+#     logging.error(message)
+#     script_log.append(message)
+
+# def process_line(line):
+#     global processed_count
+#     processed_count += 1
+    
+#     try:
+#         # Try JSON parsing
+#         record = json.loads(line)
+#         level = record.get("level", "").upper()
+#         message = record.get("message", "")
+#     except json.JSONDecodeError:
+#         # Not JSON, treat as text log
+#         parts = line.split(":", 1)
+#         if len(parts) != 2:
+#             log_error(f"Malformed line: {line}")
+#             return
+#         level, message = parts[0].strip().upper(), parts[1].strip()
+    
+#     # Only warnings and errors go to audit
+#     if level in ["WARNING", "ERROR"]:
+#         try:
+#             with open(audit_file_path, "a") as f:
+#                 f.write(f"{level}: {message}\n")
+#         except Exception as e:
+#             log_error(f"Failed to write to audit file: {e}")
+
+# for line in input_lines:
+#     try:
+#         process_line(line)
+#     except Exception as e:
+#         log_error(f"Unexpected error processing line: {line} | Error: {e}")
+
+# summary = f"Processed {processed_count} lines, {failed_count} failures. Audit written to {audit_file_path}"
+# print(summary)
+# logging.info(summary)
+
+# # Optional: view in-memory script log
+# print("\nScript log:")
+# for entry in script_log:
+#     print(entry)
+
+
 import requests
 
 class InvalidAPIResponse(Exception):
