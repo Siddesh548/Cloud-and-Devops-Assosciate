@@ -15,7 +15,7 @@ logging.basicConfig(
 
 def analyze_apis():
 
-    files = glob.glob("Cloud-and-Devops-Associate/3GGPP/3gpp/*.yaml")[:5]
+    files = glob.glob("NETWORKING/Cloud-and-Devops-Associate/3GGPP/3gpp/*.yaml")[:5]
     summary = []
 
     stats = {
