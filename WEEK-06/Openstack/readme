@@ -1,0 +1,137 @@
+**OpenStack MicroStack Networking – VXLAN Error & Correct Configuration Guide
+Overview**
+
+This document explains the end-to-end workflow of creating networking components in OpenStack MicroStack, the errors encountered during setup, why those errors occurred, and the correct solutions.
+
+The environment uses MicroStack (Snap) with OVN + GENEVE overlay networking.
+
+Environment Details
+Component	Value
+OpenStack Distribution	MicroStack
+Installation Method	Snap
+Neutron Backend	OVN
+Overlay Type	GENEVE
+OS	Linux VM
+Project	admin
+1. Attempt to Create VXLAN Provider Network
+Command Used
+openstack network create --provider-network-type vxlan vnf-net
+
+Error
+Command 'openstack' not found
+
+Reason
+
+The standard openstack CLI is not installed
+
+MicroStack provides its own authenticated CLI
+
+Correct CLI
+sudo snap run microstack.openstack
+
+2. VXLAN Provider Network Creation Fails
+Command Used
+sudo snap run microstack.openstack network create \
+  --provider-network-type vxlan \
+  --provider-segment 1001 \
+  vnf-net
+
+Error
+Invalid input for operation: Network type vxlan is not supported
+
+Root Cause
+
+MicroStack does not support provider VXLAN networks
+
+It uses OVN, which defaults to GENEVE
+
+Overlay networking is automatically managed
+
+Key Point
+
+In MicroStack, users cannot manually create provider VXLAN networks.
+
+3. Correct Way to Create Network (Tenant Network)
+Command
+sudo snap run microstack.openstack network create vnf-net
+
+Result
+provider:network_type     geneve
+provider:segmentation_id auto-generated
+status                   ACTIVE
+
+4. Verify Network Details
+sudo snap run microstack.openstack network show vnf-net
+
+Key Fields
+provider:network_type     geneve
+router:external           Internal
+mtu                       1442
+
+5. Create Subnet
+Command
+sudo snap run microstack.openstack subnet create \
+  --network vnf-net \
+  --subnet-range 10.10.10.0/24 \
+  vnf-subnet
+
+Result
+
+Gateway: 10.10.10.1
+
+DHCP: Enabled
+
+Allocation Pool: 10.10.10.2 – 10.10.10.254
+
+6. Create Router
+Command
+sudo snap run microstack.openstack router create vnf-router
+
+Result
+
+Router created successfully
+
+Status: ACTIVE
+
+7. Error While Adding Subnet to Router
+Command Used
+sudo snap run microstack.openstack router add subnet vnf-router vnf-subnet
+
+Error
+More than one Router exists with the name 'vnf-router'
+
+Reason
+
+OpenStack allows duplicate resource names
+
+CLI cannot determine which router to use
+
+8. List Routers to Get IDs
+Command
+sudo snap run microstack.openstack router list
+
+Output Example
+ID                                   Name
+----------------------------------  ----------
+0cc78fa1-f424-48ca-b486-249cdacd8fbd  vnf-router
+11cd8fa5-8bfd-4372-9126-d1fd7e4aac17  vnf-router
+bc68f1ec-d08e-44a0-bce2-b022577dc143  test-router
+
+9. Correct Command Using Router ID
+Command
+sudo snap run microstack.openstack router add subnet \
+  11cd8fa5-8bfd-4372-9126-d1fd7e4aac17 \
+  vnf-subnet
+
+Result
+
+Subnet successfully attached to the router.
+
+10. Final Network Topology
+VM
+ ↓
+vnf-net (GENEVE overlay)
+ ↓
+vnf-subnet (10.10.10.0/24)
+ ↓
+vnf-router

@@ -1,0 +1,15 @@
+  1 sudo apt update
+    2  sudo snap run microstack init --auto --control
+    3  cat /etc/hosts
+    4  sudo snap logs microstack.mysqld
+    5  sudo snap services microstack.rabbitmq-server
+    6  sudo tail -30 /
+    7  sudo tail -30 /var/snap/microstack/common/log/rabbitmq/
+    8  cd /var/snap/microstack/common/log/rabbitmq/
+    9  sudo tail -30 /var/snap/microstack/common/log/rabbitmq/rabbit@openstack.log
+   10  sudo snap remove --purge microstack
+   11  sudo snap services microstack
+   12  sudo snap install microstack --edge --devmode
+   13  sudo snap run microstack init --auto --control
+   14  history
+   15  history >>openstack.txt
